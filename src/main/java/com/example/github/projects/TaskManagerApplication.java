@@ -1,4 +1,4 @@
-package com.example.github.projects.TaskManager;
+package com.example.github.projects;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
