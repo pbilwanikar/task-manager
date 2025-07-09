@@ -3,6 +3,7 @@ package com.example.github.projects.controller;
 
 import com.example.github.projects.model.Task;
 import com.example.github.projects.service.TaskService;
+import com.fasterxml.jackson.core.PrettyPrinter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,15 @@ public class TaskController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(taskFound);
         }
         return ResponseEntity.status(HttpStatus.OK).body(taskFound);
+    }
+
+    @DeleteMapping("/deleteTaskById/{id}")
+    public ResponseEntity<String> deleteTaskById(@PathVariable Long id){
+        boolean isTaskDeleted = taskService.deleteById(id);
+        if(isTaskDeleted){
+            return ResponseEntity.status(HttpStatus.OK).body("Task Deleted Succesfully!");
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Task not found. Please try again.");
     }
 
 }
