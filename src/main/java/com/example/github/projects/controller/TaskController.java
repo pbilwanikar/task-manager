@@ -21,6 +21,7 @@ public class TaskController {
     @PostMapping("/createTask")
     public ResponseEntity<Task> createTask(@RequestBody Task task){
         Task savedTask = taskService.createTask(task);
+
         return ResponseEntity.status(HttpStatus.CREATED).body(savedTask);
     }
 
